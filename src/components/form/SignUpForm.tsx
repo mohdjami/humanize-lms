@@ -19,6 +19,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import GithubSignInButton from "../GithubSignInButton";
+import { useState } from "react";
 
 const FormSchema = z
   .object({
@@ -37,6 +38,7 @@ const FormSchema = z
 
 const SignUpForm = () => {
   const router = useRouter();
+  const [loading, isLoading] = useState(false);
   const { toast } = useToast();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -52,6 +54,7 @@ const SignUpForm = () => {
   //so the workflow should be like user clicks on sign up button
   //
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
+    isLoading(true);
     try {
       const response = await axios.post("/api/createUser", values);
       console.log("response= ", response, "status", response.status);
@@ -70,11 +73,14 @@ const SignUpForm = () => {
               "A verification email has been sent to your email address. Please verify your email to complete the sign-up process.",
             variant: "destructive",
           });
+          isLoading(false);
         } catch (error) {
+          isLoading(false);
           console.log("error in sending email verification", error);
         }
       }
     } catch (error) {
+      isLoading(false);
       console.log("error in creating user", error);
       toast({
         title: "Error",
@@ -160,14 +166,14 @@ const SignUpForm = () => {
             type="submit"
             variant="outline"
           >
-            Sign up
+            {loading ? "Loading..." : "Sign up"}
           </Button>
           <Button
             className="w-full mt-4 md:mt-8 lg:mt-10 block lg:hidden"
             type="submit"
             variant="outline"
           >
-            Sign up
+            {loading ? "Loading..." : "Sign up"}
           </Button>
         </div>
       </form>

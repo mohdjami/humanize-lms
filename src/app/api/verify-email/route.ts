@@ -37,15 +37,9 @@ export async function GET(req: Request) {
       where: { id: user.id },
       data: { emailVerified: new Date() },
     });
-    return NextResponse.json(
-      {
-        user: null,
-        message: "user successfully verified",
-      },
-      { status: 200 }
-    );
+    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}`);
   } catch (error) {
-    console.log("fial error", error);
+    console.log("fail error", error);
     return NextResponse.json(
       { user: null, message: "something went wrong" },
       { status: 500 }
