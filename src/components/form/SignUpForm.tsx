@@ -86,6 +86,12 @@ const SignUpForm = () => {
 
   return (
     <Form {...form}>
+      <div className="space-y-0 text-center">
+        <h1 className="text-3xl font-bold dark:text-slate-900">Sign Up</h1>
+        <p className="text-center text-sm text-gray-600 my-2 pb-4">
+          Create an Account to start working...
+        </p>
+      </div>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="w-full space-y-2 md:space-y-2"
@@ -96,14 +102,8 @@ const SignUpForm = () => {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="w-full mt-4 mb-1 md:mt-8 lg:mt-10 block lg:hidden dark:text-gray-600">
-                  Username
-                </FormLabel>
-                <FormLabel className="md:block hidden dark:text-gray-600  md:mb-1">
-                  Username
-                </FormLabel>
                 <FormControl>
-                  <Input placeholder="johndoe" {...field} />
+                  <Input placeholder="Create a Username" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -114,9 +114,8 @@ const SignUpForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="dark:text-gray-600">Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="mail@example.com" {...field} />
+                  <Input placeholder="Enter your Email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -127,7 +126,6 @@ const SignUpForm = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className=" dark:text-gray-600">Password</FormLabel>
                 <FormControl>
                   <Input
                     type="password"
@@ -144,9 +142,6 @@ const SignUpForm = () => {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="dark:text-gray-600">
-                  Re-Enter your password
-                </FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Re-Enter your password"
