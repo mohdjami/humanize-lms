@@ -1,6 +1,18 @@
 <<<<<<< HEAD
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## EduNexus AI
+EduNexus AI, a transformation from a simple EdTech to AI powered EdTech, that can be used by schools worldwide.
+A LMS(Learning Management System) system with EIMS(Education Institution Management System) our data storing system for further
+improvements in our own system, could even be used by research institutes or government for making better policies.
+AI Cousnellor, for students for talking about their day-to-day problems.
+(anonymity of student data is made sure for most conversations with our AI.)
 
+For counsellor we have fine-tune llama-3-8B on https://www.youdata.ai/datasets/661d14096afcd643cb80668f,
+also we have used llama-guard-2-8B for user question filter.
+**Response from AI is slow cause models are running on hf-cpu.
+
+Python api code: https://huggingface.co/spaces/Arpit-Bansal/llama_3_8B-counsellor_v0.5/tree/main
+counsellor can be separately accessed via: https://arpit-bansal-llama-3-8b-counsellor-v0-5.hf.space/docs#
 ## Getting Started
 
 First, run the development server:
