@@ -6,7 +6,9 @@ const Admin = async () => {
   console.log(session, "session");
   if (session?.user) {
     return (
-      <div className="text-2xl">Welcome to admin {session?.user.username}</div>
+      <div className="text-2xl m-32">
+        Welcome to admin {session?.user.username}
+      </div>
     );
   }
   return <h2>Please login to see this admin page</h2>;

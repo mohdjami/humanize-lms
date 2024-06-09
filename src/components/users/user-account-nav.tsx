@@ -4,7 +4,7 @@ import Link from "next/link";
 import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 
-import { dashboardLinks } from "@/config/links";
+import { studentDashboardLinks } from "@/config/links";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Icons } from "@/components/Icons";
-import { UserAvatar } from "@/components/user/user-avatar";
+import { UserAvatar } from "./user-avatar";
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
   user: Pick<User, "name" | "image" | "email">;
@@ -43,7 +43,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
           </div>
         </div>
         <DropdownMenuSeparator />
-        {dashboardLinks.data.map((item, index) => {
+        {studentDashboardLinks.data.map((item, index) => {
           const Icon = Icons[item.icon || "next"];
           return (
             item.href && (

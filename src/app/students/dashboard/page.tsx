@@ -289,8 +289,8 @@ export default function Component() {
                       New Assignment Due
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400">
-                      Your "Introduction to Web Development" assignment is due
-                      tomorrow at 11:59 PM.
+                      Your &quot;Introduction to Web Development&quot;
+                      assignment is due tomorrow at 11:59 PM.
                     </p>
                   </div>
                 </div>
@@ -303,8 +303,8 @@ export default function Component() {
                       Upcoming Class
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400">
-                      Your "Data Structures and Algorithms" class is tomorrow at
-                      9:00 AM.
+                      Your &quot;Data Structures and Algorithms&quot; class is
+                      tomorrow at 9:00 AM.
                     </p>
                   </div>
                 </div>
@@ -317,8 +317,8 @@ export default function Component() {
                       Announcement
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400">
-                      The "Introduction to Machine Learning" course has been
-                      updated with new content.
+                      The &quot;Introduction to Machine Learning&quot; course
+                      has been updated with new content.
                     </p>
                   </div>
                 </div>
