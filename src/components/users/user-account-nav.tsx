@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { User } from "next-auth"
-import { signOut } from "next-auth/react"
+import Link from "next/link";
+import { User } from "next-auth";
+import { signOut } from "next-auth/react";
 
-import { dashboardLinks } from "@/config/links"
+import { dashboardLinks } from "@/config/links";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Icons } from "@/components/icons"
-import { UserAvatar } from "@/components/user/user-avatar"
+} from "@/components/ui/dropdown-menu";
+import { Icons } from "@/components/Icons";
+import { UserAvatar } from "@/components/user/user-avatar";
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
-  user: Pick<User, "name" | "image" | "email">
+  user: Pick<User, "name" | "image" | "email">;
 }
 
 export function UserAccountNav({ user }: UserAccountNavProps) {
@@ -44,7 +44,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         </div>
         <DropdownMenuSeparator />
         {dashboardLinks.data.map((item, index) => {
-          const Icon = Icons[item.icon || "next"]
+          const Icon = Icons[item.icon || "next"];
           return (
             item.href && (
               <DropdownMenuItem key={index} className="cursor-pointer" asChild>
@@ -54,16 +54,16 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
                 </Link>
               </DropdownMenuItem>
             )
-          )
+          );
         })}
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="cursor-pointer"
           onSelect={(event) => {
-            event.preventDefault()
+            event.preventDefault();
             signOut({
               callbackUrl: `${window.location.origin}/signin`,
-            })
+            });
           }}
         >
           <Icons.signout className="mr-2 h-4 w-4" />
@@ -71,5 +71,5 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }
