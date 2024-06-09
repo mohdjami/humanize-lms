@@ -28,6 +28,20 @@ const Navbar = async () => {
               Features
             </Link>
             <Link
+              href="/students"
+              className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
+              prefetch={false}
+            >
+              Students
+            </Link>{" "}
+            <Link
+              href="/teachers"
+              className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
+              prefetch={false}
+            >
+              Teachers
+            </Link>
+            <Link
               href="/#pricing"
               className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
               prefetch={false}

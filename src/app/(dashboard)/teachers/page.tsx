@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
+import CoursesDashboard from "@/components/Courses";
 
 const Teachers = () => {
-  return <div>Teachers</div>;
+  return <CoursesDashboard />;
 };
 
 export default Teachers;
