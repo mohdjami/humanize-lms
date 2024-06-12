@@ -1,13 +1,13 @@
-import Link from "next/link"
-import { User } from "next-auth"
+import Link from "next/link";
+import { User } from "next-auth";
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
-import { UserAccountNav } from "./user-account-nav"
+import { UserAccountNav } from "./user-account-nav";
 
 interface UserNavDisplayProps extends React.HTMLAttributes<HTMLDivElement> {
-  user: Pick<User, "name" | "image" | "email">
+  user: Pick<User, "name" | "image" | "email" | "role">;
 }
 
 export function UserNavDisplay({ user }: UserNavDisplayProps) {
@@ -19,7 +19,7 @@ export function UserNavDisplay({ user }: UserNavDisplayProps) {
       >
         Sign in
       </Link>
-    )
+    );
   }
 
   return (
@@ -28,7 +28,8 @@ export function UserNavDisplay({ user }: UserNavDisplayProps) {
         name: user.name,
         image: user.image,
         email: user.email,
+        role: user.role,
       }}
     />
-  )
+  );
 }
