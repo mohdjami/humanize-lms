@@ -3,11 +3,13 @@ import { Button, buttonVariants } from "./ui/button";
 import { Book, HandMetal, Home } from "lucide-react";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
-import UserAccountNav from "./UserAccountNav";
+import { UserAccountNav } from "./users/user-account-nav";
 import { ModeToggle } from "./mode-toggle";
+import { getCurrentUser } from "@/lib/session";
 
 const Navbar = async () => {
-  const session = await getServerSession(authOptions);
+  const user = await getCurrentUser();
+
   return (
     <div className=" bg-zinc-100 py-2 border-b border-s-zinc-200 fixed w-full z-10 top-0">
       <div className="container flex items-center justify-between">
@@ -64,8 +66,8 @@ const Navbar = async () => {
             </Link>
           </nav>
         </header>
-        {session?.user ? (
-          <UserAccountNav />
+        {user ? (
+          <UserAccountNav user={user} />
         ) : (
           <Link
             className={buttonVariants({ variant: "secondary" })}

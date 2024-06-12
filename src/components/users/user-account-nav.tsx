@@ -4,7 +4,7 @@ import Link from "next/link";
 import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 
-import { studentDashboardLinks } from "@/config/links";
+import { studentDashboardLinks, teacherDashboardLinks } from "@/config/links";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +16,7 @@ import { Icons } from "@/components/Icons";
 import { UserAvatar } from "./user-avatar";
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
-  user: Pick<User, "name" | "image" | "email">;
+  user: Pick<User, "name" | "image" | "email" | "role">;
 }
 
 export function UserAccountNav({ user }: UserAccountNavProps) {
@@ -43,26 +43,49 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
           </div>
         </div>
         <DropdownMenuSeparator />
-        {studentDashboardLinks.data.map((item, index) => {
-          const Icon = Icons[item.icon || "next"];
-          return (
-            item.href && (
-              <DropdownMenuItem key={index} className="cursor-pointer" asChild>
-                <Link href={item.href}>
-                  <Icon className="mr-2 h-4 w-4" />
-                  <span>{item.title}</span>
-                </Link>
-              </DropdownMenuItem>
-            )
-          );
-        })}
+        {user.role[0] === "user" &&
+          studentDashboardLinks.data.map((item, index) => {
+            const Icon = Icons[item.icon || "next"];
+            return (
+              item.href && (
+                <DropdownMenuItem
+                  key={index}
+                  className="cursor-pointer"
+                  asChild
+                >
+                  <Link href={item.href}>
+                    <Icon className="mr-2 h-4 w-4" />
+                    <span>{item.title}</span>
+                  </Link>
+                </DropdownMenuItem>
+              )
+            );
+          })}
+        {user.role[1] === "teacher" &&
+          teacherDashboardLinks.data.map((item, index) => {
+            const Icon = Icons[item.icon || "next"];
+            return (
+              item.href && (
+                <DropdownMenuItem
+                  key={index}
+                  className="cursor-pointer"
+                  asChild
+                >
+                  <Link href={item.href}>
+                    <Icon className="mr-2 h-4 w-4" />
+                    <span>{item.title}</span>
+                  </Link>
+                </DropdownMenuItem>
+              )
+            );
+          })}
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="cursor-pointer"
           onSelect={(event) => {
             event.preventDefault();
             signOut({
-              callbackUrl: `${window.location.origin}/signin`,
+              callbackUrl: `${window.location.origin}/sign-in`,
             });
           }}
         >
