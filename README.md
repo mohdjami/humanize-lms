@@ -13,6 +13,7 @@ also we have used llama-guard-2-8B for user question filter.
 
 Python api code: https://huggingface.co/spaces/Arpit-Bansal/llama_3_8B-counsellor_v0.5/tree/main
 counsellor can be separately accessed via: https://arpit-bansal-llama-3-8b-counsellor-v0-5.hf.space/docs#
+our model used as counsellor: https://huggingface.co/Arpit-Bansal/counsellor_model_q5_k_m
 ## Getting Started
 
 First, run the development server:
