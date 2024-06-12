@@ -35,7 +35,7 @@ export const authOptions: AuthOptions = {
         if (!user) {
           return null;
         }
-        if (!user.password) {
+        if (user.password) {
           const isValid = await compare(credentials.password, user.password!);
           if (!isValid) {
             return null;
@@ -69,7 +69,6 @@ export const authOptions: AuthOptions = {
         session.user.image = token.picture;
         session.user.role = token.role;
       }
-
       return session;
     },
     async jwt({ token, user }) {

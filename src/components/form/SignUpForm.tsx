@@ -65,7 +65,7 @@ const SignUpForm = () => {
     isLoading(true);
     try {
       const response = await axios.post("/api/createUser", values);
-      console.log("response= ", response, "status", response.status);
+      // console.log("response= ", response, "status", response.status);
 
       if (response.status === 201) {
         try {

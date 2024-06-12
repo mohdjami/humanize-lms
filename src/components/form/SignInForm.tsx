@@ -66,7 +66,7 @@ const SignInForm = () => {
         password: values.password,
         redirect: false,
       });
-      console.log(result);
+      // console.log(result);
       if (result?.error === "CredentialsSignin") {
         toast({
           title: "Either email or password is wrong",
@@ -78,9 +78,23 @@ const SignInForm = () => {
         const response = await verifyEmail(values.email);
 
         if (response.status === 200) {
-          router.push("/admin");
-          router.refresh();
+          const res = await fetch("api/get-users", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email: values.email }),
+          });
+          const role = await res.json();
+          if (role === "user") {
+            router.push("/students");
+          } else if (role === "teacher") {
+            router.push("/teachers");
+          } else {
+            router.push("/admin");
+          }
           isLoading(false);
+          router.refresh();
         } else {
           isLoading(false);
           toast({
@@ -91,6 +105,7 @@ const SignInForm = () => {
           });
         }
       }
+      isLoading(false);
     } catch (error) {
       isLoading(false);
 

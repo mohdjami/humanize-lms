@@ -1,9 +1,11 @@
 import { db } from "@/lib/db";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { hash } from "bcrypt";
 import { z } from "zod";
 import { UserSchema } from "@/app/validations/user";
 import { Role } from "@prisma/client";
+import { NextRouter } from "next/router";
+import { getCurrentUser } from "@/lib/session";
 
 export async function POST(req: Request) {
   try {
