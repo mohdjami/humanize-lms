@@ -46,6 +46,7 @@ export const authOptions: AuthOptions = {
           id: `${user.id}`,
           username: user.username,
           email: user.email,
+          role: user.role,
         };
       },
     }),
@@ -66,6 +67,7 @@ export const authOptions: AuthOptions = {
         session.user.name = token.name;
         session.user.email = token.email;
         session.user.image = token.picture;
+        session.user.role = token.role;
       }
 
       return session;
@@ -83,12 +85,13 @@ export const authOptions: AuthOptions = {
         }
         return token;
       }
-
+      console.log(dbUser.role[0]);
       return {
         id: dbUser.id,
-        name: dbUser.name,
+        name: dbUser.username,
         email: dbUser.email,
         picture: dbUser.image,
+        role: dbUser.role,
       };
     },
   },

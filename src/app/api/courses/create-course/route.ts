@@ -3,7 +3,9 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request, res: Response) {
   try {
-    const { title, description, teacher } = await req.json();
+    const { title, description, teacher, startDate, endDate } =
+      await req.json();
+    console.log(title, description, teacher, startDate, endDate);
     //check if the same course in the teachers id already exists
     const teacherExists = await db.user.findUnique({
       where: {
@@ -37,6 +39,8 @@ export async function POST(req: Request, res: Response) {
             id: teacherExists?.id,
           },
         },
+        startDate,
+        endDate,
       },
     });
 
